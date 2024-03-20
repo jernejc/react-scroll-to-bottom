@@ -13,14 +13,16 @@
     "docker:watch": "nodemon --exec \"docker-compose build --quiet -- webserver && docker-compose kill webserver && docker-compose rm --force --stop webserver && docker-compose up --detach -- webserver\" --ext html,js,json,map --on-change-only --watch __tests__ --watch packages/component/dist",
     "precommit": "lint-staged",
     "precommit:component": "cd packages && cd component && npm run precommit --",
-    "prepare": "husky install && npm run build",
+    "prepare": "husky install",
     "start": "concurrently \"npm run start:*\"",
     "start:build": "lerna run start --ignore=playground --parallel --stream",
     "start:serve": "serve -c __tests__/serve.json",
     "test": "jest"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "concurrently": "^6.3.0",
+    "esbuild": "^0.20.2",
     "husky": "^7.0.2",
     "jest": "^27.2.5",
     "lerna": "^4.0.0",
